@@ -47,6 +47,3 @@ build/
 
 # Optional npm cache directory
 .npm
-
-# Cursor specific
-.cursor/ 
