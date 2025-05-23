@@ -1,7 +1,7 @@
 # Notion API 서버
 
 ## 레퍼런스 영상
-![Notion MCP 사용법 영상](public/notion_mcp_video.mov)
+![Notion MCP 사용법 영상](public/notion_mcp_video.gif)
 
 노션 API를 간편하게 사용하기 위한 커스텀 서버입니다. Express.js를 사용하여 구현되었으며, Notion API의 다양한 기능을 REST API로 제공합니다.
 
