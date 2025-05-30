@@ -10,7 +10,7 @@ RUN npm install
 COPY . .
 
 # 포트 노출
-EXPOSE 3000
+EXPOSE 9080
 
 # 환경 변수 설정
 ENV NODE_ENV=production
