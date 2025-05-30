@@ -16,7 +16,7 @@ const swaggerOptions = {
     },
     servers: [
       {
-        url: 'http://localhost:3000',
+        url: `http://localhost:${process.env.PORT || 3000}`,
         description: '개발 서버',
       },
     ],
@@ -35,6 +35,25 @@ app.use(cors({
   exposedHeaders: ['X-MCP-Version'],
 }));
 app.use(express.json());
+
+// 정적 파일 제공 설정
+app.use(express.static('public'));
+
+// index.html 파일을 제공할 때 PORT 환경 변수 주입
+app.get('/', (req, res) => {
+  const fs = require('fs');
+  const path = require('path');
+  
+  let html = fs.readFileSync(path.join(__dirname, 'index.html'), 'utf8');
+  
+  // API_BASE_URL을 환경 변수 PORT를 사용하여 동적으로 설정
+  html = html.replace(
+    "const API_BASE_URL = 'http://localhost:3000/api';",
+    `const API_BASE_URL = 'http://localhost:${PORT}/api';`
+  );
+  
+  res.send(html);
+});
 
 // 모든 응답에 MCP 헤더 추가
 app.use((req, res, next) => {
